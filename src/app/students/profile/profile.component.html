@@ -1,0 +1,51 @@
+
+
+      <div class="row">
+          <div class="col-sm-12">
+              <div class="page-title-box text">
+                <h4 class="page-title">Profile</h4>
+              </div>
+                          <div class="text-center card-box custom">
+                              <div class="member-card">
+                                  <div class="thumb-xl member-thumb m-b-10 center-block">
+                                      <img src="assets/images/users/avatar-1.jpg" class="img-circle img-thumbnail" alt="profile-image">
+                                      <i class="mdi mdi-star-circle member-star text-success" title="verified user"></i>
+                                  </div>
+
+                                  <div class="">
+                                      <h4 class="m-b-5">{{this.authService.getCurrentUser().name}}</h4>
+                                      <p class="text-muted">@student</p>
+                                  </div>
+
+                                  <button type="button" mat-list-item [routerLink]="['editProfile']" routerLinkActive="router-link-active" class="btn btn-success  w-sm waves-effect m-t-10 waves-light"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                    Edit</button>
+
+                                  <hr/>
+
+                                  <div class="text-left">
+                                      <p class="text-muted font-13"><strong>First Name :</strong> <span class="m-l-15">{{this.authService.getCurrentUser().name}}  </span></p>
+                                      <p class="text-muted font-13"><strong>Last Name :</strong> <span class="m-l-15"> {{this.authService.getCurrentUser().surname}} </span></p>
+
+                                      <p class="text-muted font-13"><strong>Student Id :</strong><span class="m-l-15">{{this.authService.getCurrentUser().studentId}}</span></p>
+
+                                  </div>
+
+                                  <ul class="social-links list-inline m-t-30">
+                                      <li>
+                                          <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Facebook"><i class="fa fa-facebook"></i></a>
+                                      </li>
+                                      <li>
+                                          <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Twitter"><i class="fa fa-twitter"></i></a>
+                                      </li>
+                                      <li>
+                                          <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Skype"><i class="fa fa-skype"></i></a>
+                                      </li>
+                                  </ul>
+
+                              </div>
+
+                          </div> <!-- end card-box -->
+        </div>
+    </div>
+
+

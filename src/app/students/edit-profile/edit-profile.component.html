@@ -1,0 +1,30 @@
+<form style="margin-top:10%;" [formGroup]="profileForm" novalidate (ngSubmit)="onSubmit()">
+    <mat-card class="shipping-card">
+      <mat-card-header class="text">
+        <mat-card-title >Update From</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="row">
+          <div class="col-5">
+            <mat-form-field class="full-width">
+              <input matInput placeholder="First Name" formControlName="name">
+            </mat-form-field>
+          </div>
+          <div class="col-5">
+            <mat-form-field class="full-width">
+              <input matInput placeholder="Last Name" formControlName="surname">
+
+            </mat-form-field>
+          </div>
+          <div class="col-5">
+            <mat-form-field class="full-width">
+              <input matInput  minlength="4" placeholder="Password" formControlName="password">
+            </mat-form-field>
+          </div>
+        </div>
+      </mat-card-content>
+      <mat-card-actions style="text-align: center;">
+        <button  mat-raised-button color="primary" type="submit" >Submit</button>
+      </mat-card-actions>
+    </mat-card>
+  </form>

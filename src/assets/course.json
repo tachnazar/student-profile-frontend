@@ -1,0 +1,23 @@
+[
+		{
+			"id": 1,
+			"courseId":"953494",
+			"courseName":"Selected Topics in SE 1",
+			"content":"Python and Data mining Development",
+			"lecturer":{
+				"name":"Pree",
+				"surname":"Thiengburanathum"
+			}
+		},
+		{
+			"id": 2,
+			"courseId":"953234",
+			"courseName":"Advance Software Development",
+			"content":"The course for the smart students",
+			"lecturer":{
+				"name":"Pree",
+				"surname":"Thiengburanathum"
+			}
+		}
+		
+]

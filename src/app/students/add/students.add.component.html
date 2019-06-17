@@ -1,0 +1,64 @@
+<mat-toolbar>
+  <mat-toolbar-row>
+    <span>Add new student</span>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<form style="margin-left: 1em" #studentForm="ngForm" (ngSubmit)="onSubmit()" [formGroup]="sf">
+  <mat-form-field class="full-width">
+    <input matInput placeholder="Student Id" name="studentId" required formControlName="studentId">
+    <mat-error *ngFor="let validation of validation_messages.studentId">
+      <mat-error class="error-message" *ngIf="sf.get('studentId').hasError(validation.type) && (sf.get('studentId').dirty || sf.get('studentId').touched)">{{validation.message}}</mat-error>
+    </mat-error>
+  </mat-form-field>
+  <table class="full-width" cellspacing="0">
+    <tr>
+      <td>
+        <mat-form-field class="full-width">
+          <input matInput placeholder="First name" name="name" required formControlName="name">
+          <mat-error *ngFor="let validation of validation_messages.name">
+            <mat-error class="error-message" *ngIf="sf.get('name').hasError(validation.type) && (sf.get('name').dirty || sf.get('name').touched)">{{validation.message}}</mat-error>
+          </mat-error>
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="full-width">
+          <input matInput placeholder="surname" name="surname" required formControlName="surname">
+          <mat-error *ngFor="let validation of validation_messages.surnmae">
+            <mat-error class="error-message" *ngIf="sf.get('surname').hasError(validation.type) && (sf.get('surname').dirty || sf.get('surname').touched)">{{validation.message}}</mat-error>
+          </mat-error>
+        </mat-form-field>
+      </td>
+    </tr>
+    <div>
+      <mat-form-field class="penInput">
+        <input matInput placeholder="pen Amount" class="center-text" value="0" name="penAmount" required
+          formControlName="penAmount">
+        <mat-error *ngFor="let validation of validation_messages.penAmount">
+          <mat-error class="error-message" *ngIf="sf.get('penAmount').hasError(validation.type) && (sf.get('penAmount').dirty || sf.get('penAmount').touched)">{{validation.message}}</mat-error>
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </table>
+  <form>
+    <button mat-raised-button color="primary" (click)="fileInput.click()" type="button">Upload</button>
+    <input hidden id="singleFile" type="file" #fileInput [fileUploadInputFor]="fileUploadQueue" accept="image/*" />
+    <br>
+
+    <mat-file-upload-queue #fileUploadQueue [fileAlias]="'file'" [httpUrl]=uploadEndPoint>
+      <mat-file-upload [file]="file" [id]="i" *ngFor="let file of fileUploadQueue.files; let i = index" (onUpload)="processReturnFile(file,$event)"></mat-file-upload>
+    </mat-file-upload-queue>
+    <mat-error *ngFor="let validation of validation_messages.image">
+      <mat-error class="error-message" *ngIf="sf.get('image').hasError(validation.type) && (sf.get('image').dirty || sf.get('image').touched)">{{validation.message}}</mat-error>
+    </mat-error>
+  </form>
+  <mat-form-field class="full-width">
+    <textarea matInput placeholder="Description" name="description" formControlName="description"></textarea>
+    <mat-error *ngFor="let validation of validation_messages.description">
+      <mat-error class="error-message" *ngIf="sf.get('description').hasError(validation.type) && (sf.get('description').dirty || sf.get('description').touched)">{{validation.message}}</mat-error>
+    </mat-error>
+  </mat-form-field>
+  <div class="center">
+    <button mat-raised-button color="primary" type="submit" [disabled]="!studentForm.form.valid">Add</button>
+  </div>
+</form>

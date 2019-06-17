@@ -1,0 +1,38 @@
+<mat-toolbar>
+  <mat-toolbar-row>
+    <span>Student</span>
+  </mat-toolbar-row>
+</mat-toolbar>
+<form style="margin-left: 1em">
+  <mat-form-field class="full-width">
+    <input matInput placeholder="Student Id" [value]="student.studentId" readonly>
+  </mat-form-field>
+  <table class="full-width" cellspacing="0">
+    <tr>
+      <td>
+        <mat-form-field class="full-width">
+          <input matInput placeholder="First name" [value]="student.name" readonly>
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="full-width">
+          <input matInput placeholder="surname" [value]="student.surname" readonly>
+        </mat-form-field>
+      </td>
+    </tr>
+    <mat-form-field class="penInput">
+      <input matInput placeholder="pen Amount" class="center-text" [value]="student.penAmount" readonly>
+    </mat-form-field>
+  </table>
+  <div class="center">
+  <mat-card class="img-width">
+    <mat-card-header>
+      <mat-card-title>Image</mat-card-title>
+    </mat-card-header>
+    <img mat-card-image [src]="student.image" [alt]="student.name">
+  </mat-card>
+  </div>
+  <mat-form-field class="full-width">
+    <textarea matInput placeholder="Description" [value]="student.description" readonly></textarea>
+  </mat-form-field>  
+</form>

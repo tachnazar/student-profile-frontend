@@ -1,0 +1,131 @@
+
+<!-- Navigation Bar -->
+<header id="topnav">
+  <div class="topbar-main" *ngIf="hasRole('LECTURER,STUDENT,ADMIN')">
+    <div class="container">
+      <!-- Logo container -->
+      <div class="logo">
+        <!-- Text Logo -->
+        <!-- <a href="index.html" class="logo"> -->
+        <!-- Zircos -->
+        <!-- </a> -->
+        <!-- Image Logo -->
+        <h2 class="logo" style="color: #ffffff;font-family: Verdana, Geneva, sans-serif;height:30px">Learning Through
+          Activity</h2>
+        <!--<a href="index.html" class="logo">-->
+        <!--<img src="assets/images/logo.png" alt="" height="30" />-->
+        <!--</a>-->
+      </div>
+      <!-- End Logo container -->
+
+      <div class="menu-extras">
+        <ul class="nav navbar-nav navbar-right pull-right">
+          <li class="dropdown navbar-c-items">
+            <a
+              href=""
+              class="dropdown-toggle waves-effect waves-light profile"
+              data-toggle="dropdown"
+              aria-expanded="true"
+            ><img
+              src="assets/images/users/avatar-1.jpg"
+              alt="user-img"
+              class="img-circle"
+            />
+            </a>
+            <ul
+              class="dropdown-menu dropdown-menu-right arrow-dropdown-menu arrow-menu-right user-list notify-list"
+            >
+              <li class="text-center"><h5>Hi, {{this.authService.getCurrentUser().name}}</h5></li>
+              <li>
+                <a href="javascript:void(0)" mat-list-item [routerLink]="['students/profile']" routerLinkActive="router-link-active"><i class="ti-user m-r-5"></i> Profile</a>
+              </li>
+              <li>
+                <a href="" (click)="logout()"><i class="ti-power-off m-r-5"></i> Logout</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <div class="menu-item">
+          <!-- Mobile menu toggle -->
+          <a class="navbar-toggle">
+            <div class="lines"><span></span> <span></span> <span></span></div>
+          </a>
+          <!-- End mobile menu toggle -->
+        </div>
+      </div>
+      <!-- end menu-extras -->
+    </div>
+    <!-- end container -->
+  </div>
+  <!-- end topbar-main -->
+
+  <div class="navbar-custom">
+    <div class="container">
+      <div id="navigation">
+        <!-- Navigation Menu -->
+        <ul *ngIf="hasRole('STUDENT')" class="navigation-menu">
+          <li>
+            <!-- <a href="#"><i class="mdi mdi-book"></i></a> -->
+          <a style="margin-left:30px;" mat-list-item [routerLink]="['course/list']" routerLinkActive="router-link-active">Show All Activities</a>
+          </li>
+          <li *ngIf="hasRole('LECTURER')" >
+              <!-- <a href="#"><i class="mdi mdi-book"></i></a> -->
+            <a style="margin-left:30px;" mat-list-item [routerLink]="['course/add']" routerLinkActive="router-link-active">Create Activity</a>
+          </li>
+          <li >
+              <!-- <a href="#"><i class="mdi mdi-book"></i></a> -->
+            <a style="margin-left:30px;" mat-list-item [routerLink]="['students/listEnrolled']" routerLinkActive="router-link-active">Show Enrolled Activities</a>
+          </li>
+        </ul>
+        <!-- End navigation menu -->
+      </div>
+      <!-- end #navigation -->
+    </div>
+    <!-- end container -->
+  </div>
+  <!-- end navbar-custom -->
+</header>
+<!-- End Navigation Bar -->
+
+<div class="wrapper container-login100" style="background-image: url('../../assets/background.jpg');">
+  <router-outlet></router-outlet>
+</div>
+<!-- end wrapper -->
+
+<!-- jQuery -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/detect.js"></script>
+<script src="assets/js/fastclick.js"></script>
+<script src="assets/js/jquery.blockUI.js"></script>
+<script src="assets/js/waves.js"></script>
+<script src="assets/js/jquery.slimscroll.js"></script>
+<script src="assets/js/jquery.scrollTo.min.js"></script>
+<script src="../plugins/switchery/switchery.min.js"></script>
+
+<!-- App js -->
+<script src="assets/js/jquery.core.js"></script>
+<script src="assets/js/jquery.app.js"></script>
+
+<script>
+  $(function () {
+    $("body").on("click", ".demo-animation .btn", function () {
+      var animation = $(this).text();
+      var cardImg = $(this)
+        .closest(".card-box")
+        .find("img");
+      if (animation === "hinge") {
+        animationDuration = 2100;
+      } else {
+        animationDuration = 1200;
+      }
+
+      cardImg.removeAttr("class");
+      cardImg.addClass("animated " + animation);
+
+      setTimeout(function () {
+        cardImg.removeClass(animation);
+      }, animationDuration);
+    });
+  });
+</script>

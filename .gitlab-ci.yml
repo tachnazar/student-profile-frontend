@@ -1,0 +1,37 @@
+image: docker:latest
+services:
+  - docker:dind
+
+stages:
+  - build
+  - package
+  - deploy
+variables:
+  DOCKER_DRIVER: overlay
+cache:
+  paths:
+    - node_modules/
+
+build-image:
+  stage: build
+  script:
+  - docker build -t 592115514/se331-project-frontend .
+
+
+docker-build:
+  stage: package
+  script:
+  - docker login -u 592115514 -p $PASSWORD
+  - docker push 592115514/se331-project-frontend
+
+
+docker-compose:
+  stage: deploy
+  before_script:
+    - apk add --no-cache py-pip      # <--
+    - pip install docker-compose     # <--
+    - apk add --update curl && rm -rf /var/cache/apk/*
+  script:
+    - docker-compose pull
+    - docker-compose -H $DOCKER_HOST down
+    - docker-compose -H $DOCKER_HOST up -d

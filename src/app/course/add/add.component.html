@@ -1,0 +1,62 @@
+<form class="form-custom" [formGroup]="addressForm" novalidate (ngSubmit)="onSubmit()">
+  <mat-card class="shipping-card">
+    <mat-card-header>
+      <mat-card-title>Course Information</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="row">
+        <div class="col-3">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Course id" formControlName="courseId">
+            <mat-error *ngFor="let validation of validation_messages.courseId">
+              <mat-error class="error-message" *ngIf="addressForm.get('courseId').hasError(validation.type)"
+                [innerHTML]=validation.message>
+              </mat-error>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Course name" formControlName="courseName">
+            <mat-error *ngFor="let validation of validation_messages.courseName">
+                <mat-error class="error-message" *ngIf="addressForm.get('courseName').hasError(validation.type)"
+                  [innerHTML]=validation.message>
+                </mat-error>
+              </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <textarea matInput placeholder="Content" formControlName="content"></textarea>
+            <mat-error *ngFor="let validation of validation_messages.content">
+                <mat-error class="error-message" *ngIf="addressForm.get('content').hasError(validation.type)"
+                  [innerHTML]=validation.message>
+                </mat-error>
+              </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-select placeholder="Lecturer" formControlName="lecturer" [(value)]="lecturerId">
+              <mat-option *ngFor="let lecturer of lecturers" [value]="lecturer.id">
+                {{ lecturer.name + ' ' + lecturer.surname }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngFor="let validation of validation_messages.lecturer">
+                <mat-error class="error-message" *ngIf="addressForm.get('lecturer').hasError(validation.type)"
+                  [innerHTML]=validation.message>
+                </mat-error>
+              </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit" [disabled]="!addressForm.valid">Submit</button>
+    </mat-card-actions>
+  </mat-card>
+</form>

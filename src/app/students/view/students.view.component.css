@@ -1,0 +1,28 @@
+.full-width {
+	width: 100%;
+  }
+  
+  .center-button {
+	text-align: center;
+	padding-left: .5em;
+	min-width: 0.5rem;
+	max-width: 0.5rem;
+  }
+  
+  .center-text {
+	text-align: center;
+  }
+  
+  .center {
+	display: flex;
+	justify-content: center;
+  }
+  .penInput {
+	  min-width:3rem;
+	  max-width: 6rem;
+	}
+
+	.img-width{
+		max-width: 400px;
+		
+	}

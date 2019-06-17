@@ -1,0 +1,6 @@
+version: '3.3'
+services:
+  nginx:
+    image: 592115514/se331-project-frontend
+    ports:
+      - "8085:80"
